@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Ubicación
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Ubicación</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Título</ion-card-title>
+        <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+        {{entidad | json}}<br>
+        {{municipio | json}}<br>
+        {{localidad | json}}<br>
+
+        <ion-select label="Entidad" placeholder="Elija la entidad a consultar" [(ngModel)]="entidad" (ionChange)="elegirMunicipio()">
+          <ion-select-option *ngFor="let e of entidades" [value]="e">{{e.nombre}}</ion-select-option>          
+        </ion-select>
+
+        <ion-select label="Municipio" placeholder="Elija el muncipio a consultar" [(ngModel)]="municipio" (ionChange)="elegirLocalidad()">
+          <ion-select-option *ngFor="let m of municipios" [value]="m">{{m.nombre}}</ion-select-option>          
+        </ion-select>
+
+        <ion-select label="Localidad" placeholder="Elija la localidad a consultar" [(ngModel)]="localidad">
+          <ion-select-option *ngFor="let l of localidades" [value]="l">{{l.nombre}}</ion-select-option>          
+        </ion-select>
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
